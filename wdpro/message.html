@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View and manage user-submitted messages.">
+    <title>Message Received | Book Store</title>
+  <style>
+    body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; 
+    color: #343a40; 
+}
+
+
+.container1 {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1); 
+}
+
+
+.container2 {
+    padding: 20px;
+    text-align: left;
+    background-color: #fdfdfd;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+}
+
+
+.head {
+    font-size: 26px;
+    font-weight: bold;
+    color: #007BFF; 
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    font-size: 18px;
+    margin: 12px 0;
+    color: #555;
+}
+
+#deleteButton {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #FF5733; 
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#deleteButton:hover {
+    background-color: #C70039; 
+    transform: scale(1.05);
+}
+.nvbr{
+  display: flex;
+  background-color: rgb(0, 68, 255);
+  justify-content: space-between;
+  position: sticky;
+  top: 2%;
+  z-index: 3;
+}
+ .logo{
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+.txthd{
+  font-family:"Times New Roman", Times, serif;
+  font: 1em sans-serif;
+  font-size: 2em;
+}
+.cont-menu ul{
+  display: flex;
+  gap: 15px;
+  list-style: none;
+}
+.cont-menu ul li a{
+  text-decoration: none;
+  font-size: 1.1em;
+  color: white;
+}
+.users-menu ul{
+  display: flex;
+  gap: 15px;
+  list-style: none;
+}
+.menu-container{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+.users-menu ul li a{
+  text-decoration: none;
+  font-size: 1.1em;
+  color: white;
+
+}
+.users-menu ul li a img{
+  text-decoration: none;
+
+} .menu-toggle{
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 1100;
+  }
+
+  .menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color:blueviolet;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    padding-top: 50px;
+  }
+
+  .menu-container.active {
+    transform: translateX(0);
+  }
+
+  .menu-container .cont-menu,
+  .menu-container .users-menu {
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-container ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .menu-container ul li a {
+    text-decoration: none;
+    font-size: 1.1em;
+    color: white;
+  }
+
+  .cont, .users {
+    display: none;
+  }
+}
+.menu-container ul li a {
+  position: relative;
+  text-decoration: none;
+  font-size: 1.1em;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.menu-container ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: blue;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.menu-container ul li a:hover {
+  color: rgb(0, 255, 140);
+}
+
+.menu-container ul li a:hover::after {
+  width: 100%;
+}
+
+.menu-container ul li a.active {
+  color:white;
+}
+
+.menu-container ul li a.active::after {
+  width: 100%;
+}
+  .container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .user-entry {
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-entry:hover {
+    transform: translateY(-10px) scale(1.05);  
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .deleteButton {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 150px;
+    
+  }
+
+  .deleteButton:hover {
+    background-color: #c0392b;
+    transform: scale(1.1);  
+  }
+      body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+     background-image: linear-gradient(to bottom, rgb(190, 212, 232),rgb(166, 207, 247) );
+    
+    color: #343a40;
+
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#order-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.order-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+    font-weight: bold;
+    font-size: 16px;
+    color: #007BFF;
+}
+
+.order-details {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.status-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.status-complete {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-complete:hover {
+    background-color: #218838;
+}
+
+.status-pending {
+    background-color: #FFC107;
+    color: black;
+}
+
+.status-pending:hover {
+    background-color: #e0a800;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #c0392b;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    padding: 8px 16px;
+    background: #fff;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.profile-icon img {
+    width: 30px;
+    height: 30px;
+}
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #4facfe;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: #007bff;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+}
+
+.order-card,
+.orderlist {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideIn 0.6s ease forwards;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.order-card {
+  animation-delay: 0.2s;
+}
+
+.orderlist {
+  animation-delay: 0.1s;
+}
+
+.order-card:hover,
+.orderlist:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.order-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideIn 0.6s ease forwards;
+  animation-delay: 0.2s;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.order-card:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+  </style>
+</head>
+<body>
+       <nav class="navbar" style="background-color: #6bb2ff;">
+        <div class="logo">Admin <span>Dashboard</span></div>
+        <div class="nav-links">
+         <a href="orderbackend.html"><button class="nav-btn" style="color: black;" >Home</button></a>  
+           <a href="page1pro.html"><button class="nav-btn" style="color: black;"  >Products</button></a>    
+            <a href="message.html"><button class="nav-btn" style="color: black;"  >Message</button></a>   
+          </div>
+        <div class="profile-icon">
+            <a href="port-krtk.html">
+                <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Profile" /></a>
+        </div>
+    </nav>
+    <main class="container1">
+
+    </main>
+   <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menuContainer = document.querySelector(".menu-container");
+
+    menuToggle.addEventListener("click", function () {
+      menuContainer.classList.toggle("active");
+    });
+
+    const currentUrl = window.location.href;
+    const links = document.querySelectorAll(".menu-container ul li a");
+
+    links.forEach(link => {
+      if (link.href === currentUrl) {
+        link.classList.add("active");
+      }
+    });
+});
+ document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector(".container1");
+  
+    const contactSubmissions = [
+        {
+            name: "John Doe",
+            email: "john@example.com",
+            phone: "1234567890",
+            message: "Interested in your services."
+        },
+        {
+            name: "Jane Smith",
+            email: "jane@example.com",
+            phone: "9876543210",
+            message: "Need help with my order."
+        },
+        {
+            name: "Alex Ray",
+            email: "alex@raymail.com",
+            phone: "1112223333",
+            message: "How do I become a member?"
+        },
+        {
+            name: "Priya Mehta",
+            email: "priya@gmail.com",
+            phone: "9998887777",
+            message: "Your site looks amazing!"
+        },
+        {
+            name: "Arjun Patel",
+            email: "arjunp@site.com",
+            phone: "4445556666",
+            message: "Is there a mobile app?"
+        }
+    ];
+
+    contactSubmissions.forEach((entry, index) => {
+        const html = `
+            <section class="user-entry" data-index="${index}">
+                <h2 class="head">User's Submitted Message</h2>
+                <p><strong>Name:</strong> <span>${entry.name}</span></p>
+                <p><strong>Email:</strong> <span>${entry.email}</span></p>
+                <p><strong>Phone Number:</strong> <span>${entry.phone}</span></p>
+                <p><strong>Message:</strong> <span>${entry.message}</span></p>
+                <button class="deleteButton">Delete Data</button>
+            </section>
+        `;
+        container.innerHTML += html;
+    });
+
+    container.addEventListener('click', function (e) {
+        if (e.target && e.target.classList.contains("deleteButton")) {
+            const entrySection = e.target.closest(".user-entry");
+
+            if (confirm("Are you sure you want to delete this entry?")) {
+                entrySection.remove();
+                alert("Entry deleted.");
+            }
+        }
+    });
+});
+
+</script>
+
+</body>
+
+</html>

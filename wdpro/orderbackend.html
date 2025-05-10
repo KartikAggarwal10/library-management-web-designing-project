@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Backend interface for managing order statuses.">
+    <title>Order Management</title>
+   <style>
+    body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+     background-image: linear-gradient(to bottom, rgb(190, 212, 232),rgb(166, 207, 247) );
+    
+    color: #343a40;
+
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#order-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.order-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+    font-weight: bold;
+    font-size: 16px;
+    color: #007BFF;
+}
+
+.order-details {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.status-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.status-complete {
+    background-color: #28a745; 
+    color: white;
+}
+
+.status-complete:hover {
+    background-color: #218838;
+}
+
+.status-pending {
+    background-color: #FFC107; 
+    color: black;
+}
+
+.status-pending:hover {
+    background-color: #e0a800;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #c0392b;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    padding: 8px 16px;
+    background: #fff;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.profile-icon img {
+    width: 30px;
+    height: 30px;
+}
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #4facfe;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: #007bff;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+}
+
+.order-card,
+.orderlist {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideIn 0.6s ease forwards;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.order-card {
+  animation-delay: 0.2s;
+}
+
+.orderlist {
+  animation-delay: 0.1s;
+}
+
+.order-card:hover,
+.orderlist:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.order-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideIn 0.6s ease forwards;
+  animation-delay: 0.2s;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.order-card:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+   </style>
+</head>
+<body style="
+     background-image: linear-gradient(to bottom, rgb(190, 212, 232),rgb(166, 207, 247) );
+    ">
+       <nav class="navbar" style="background-color: #6bb2ff;">
+        <div class="logo">Admin <span>Dashboard</span></div>
+        <div class="nav-links">
+         <a href="orderbackend.html"><button class="nav-btn" style="color: black;" >Home</button></a>  
+           <a href="page1pro.html"><button class="nav-btn" style="color: black;"  >Products</button></a>   
+                       <a href="message.html"><button class="nav-btn" style="color: black;"  >Message</button></a>   
+        </div>
+        <div class="profile-icon">
+            <a href="port-krtk.html">
+                <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Profile" /></a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Order Management</h1>
+    </header>
+
+    <main>
+        <section id="admin-order-container">
+        </section>
+    </main>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const orderContainer = document.getElementById("admin-order-container");
+
+    let orders = [
+      {
+        _id: "a1",
+        buyerName: "Alice Johnson",
+        date: "2025-05-01T10:30:00Z",
+        name: "Introduction to Algorithms",
+        price: 750,
+        paymentType: "UPI",
+        feedback: "Excellent book!"
+      },
+      {
+        _id: "a2",
+        buyerName: "Bob Smith",
+        date: "2025-05-05T15:00:00Z",
+        name: "Clean Code",
+        price: 499,
+        paymentType: "Cash on Delivery",
+        feedback: "Fast delivery. Thanks!"
+      },
+      {
+        _id: "a3",
+        buyerName: "Chaitanya Rao",
+        date: "2025-05-07T12:45:00Z",
+        name: "JavaScript: The Good Parts",
+        price: 299,
+        paymentType: "Credit Card",
+        feedback: "Would recommend."
+      }
+    ];
+
+    const renderOrders = () => {
+      if (orders.length === 0) {
+        orderContainer.innerHTML = "<p>No orders found!</p>";
+        return;
+      }
+
+      orderContainer.innerHTML = ""; 
+
+      orders.forEach(order => {
+        const orderCard = document.createElement("div");
+        orderCard.classList.add("order-card");
+
+        orderCard.innerHTML = `
+          <div class="order-header">Order by: ${order.buyerName}</div>
+          <div class="order-details">Date: ${new Date(order.date).toLocaleDateString()}</div>
+          <div class="order-details">
+            <strong>Book:</strong> ${order.name} - ₹${order.price}
+          </div>
+          <div class="order-details">Payment Method: ${order.paymentType}</div>
+          <div class="order-details">Feedback: ${order.feedback}</div>
+          <button class="status-btn" data-id="${order._id}">Mark as Completed</button>
+        `;
+
+        orderContainer.appendChild(orderCard);
+      });
+
+      attachEventListeners();
+    };
+
+    const attachEventListeners = () => {
+      document.querySelectorAll(".status-btn").forEach(button => {
+        button.addEventListener("click", (e) => {
+          const id = e.target.getAttribute("data-id");
+          orders = orders.filter(order => order._id !== id);
+          renderOrders();
+        });
+      });
+    };
+
+    renderOrders();
+  });
+</script>
+
+        
+</body>
+</html>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+   <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #c0392b;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    padding: 8px 16px;
+    background: #fff;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.profile-icon img {
+    width: 30px;
+    height: 30px;
+}
+    body {
+    font-family: 'Roboto', sans-serif; 
+    background-color: #f8f9fa; 
+    margin: 0;
+    padding: 0;
+    color: #343a40; 
+}
+.container1 {
+    max-width: 700px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.container1 h2 {
+    color: #007BFF;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#productName, #productPrice, #file, .button1 {
+    margin-top: 15px;
+    width: 90%;
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#productName:focus, #productPrice:focus, #file:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); 
+}
+
+.button1 {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button1:hover {
+    background-color: #0056b3; 
+    transform: scale(1.05);
+}
+
+.container_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container2 {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 270px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.container2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+.container2 img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain; 
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.book1name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #343a40;
+    margin: 10px 0 5px 0;
+}
+
+.price {
+    font-size: 14px;
+    color: #6c757d; 
+}
+
+.design {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.button2 {
+    background-color: #FF5733; 
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button2:hover {
+    background-color: #C70039;
+    transform: translateY(-3px);
+}
+
+.popupcontainer {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 12px;
+    z-index: 1000;
+}
+
+#pop1, #status, #file2 {
+    width: 90%;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    outline: none;
+    margin: 10px 0;
+    transition: border-color 0.3s;
+}
+
+#pop1:focus, #status:focus, #file2:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+}
+
+.button3 {
+    background-color: #28a745; 
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button3:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+form {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #ffffff, #f4f4f4);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.5s ease-out;
+    transition: all 0.3s ease-in-out;
+}
+
+form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tab {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+input[type="text"],
+input[type="file"] {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.button1 {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button1:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+input[type="text"],
+input[type="file"] {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    box-sizing: border-box;
+    outline: none;
+    background-color: #fff;
+}
+
+input[type="text"]:hover,
+input[type="file"]:hover {
+    border-color: #007bff;
+    transform: scale(1.03);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+    body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+     background-image: linear-gradient(to bottom, rgb(190, 212, 232),rgb(166, 207, 247) );
+    
+    color: #343a40;
+
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#order-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.order-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+    font-weight: bold;
+    font-size: 16px;
+    color: #007BFF;
+}
+
+.order-details {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.status-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.status-complete {
+    background-color: #28a745; 
+    color: white;
+}
+
+.status-complete:hover {
+    background-color: #218838;
+}
+
+.status-pending {
+    background-color: #FFC107; 
+    color: black;
+}
+
+.status-pending:hover {
+    background-color: #e0a800;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #3d7dc1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #c0392b;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    padding: 8px 16px;
+    background: #fff;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.profile-icon img {
+    width: 30px;
+    height: 30px;
+}
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #4facfe;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: #007bff;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+}
+
+.order-card,
+.orderlist {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideIn 0.6s ease forwards;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.order-card {
+  animation-delay: 0.2s;
+}
+
+.orderlist {
+  animation-delay: 0.1s;
+}
+
+.order-card:hover,
+.orderlist:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.order-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideIn 0.6s ease forwards;
+  animation-delay: 0.2s;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.order-card:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+   </style>
+</head>
+
+<body>
+    
+    <nav class="navbar">
+        <div class="logo">Admin <span>Dashboard</span></div>
+        <div class="nav-links">
+                 <a href="orderbackend.html"><button class="nav-btn" style="color: black;" >Home</button></a>  
+           <a href="page1pro.html"><button class="nav-btn" style="color: black;"  >Products</button></a>   
+                       <a href="message.html"><button class="nav-btn" style="color: black;"  >Message</button></a>
+        </div>
+        <div class="profile-icon">
+            <a href="port-krtk.html">
+            <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Profile" /></a>
+        </div>
+    </nav>
+
+    <div class="container1">
+        <div class="title">
+            <h2>Add Product</h2>
+        </div>
+
+        <form method="post" enctype="multipart/form-data">
+            <div class="tab" >
+                <input type="text" id="name" name="name" placeholder="Enter Product Name" required>
+            </div>
+
+            <div class="tab">
+                <input type="text" id="price" name="price" placeholder="Enter Product Price" required>
+            </div>
+
+            <div class="tab">
+                <input type="file" id="cover" name="cover" required>
+            </div>
+
+            <div class="tab">
+                <button class="button1" type="submit">Add Product</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container_wrapper">
+        <div class="container2">
+            <img src="./people/81ZPcK6HpuL.jpg" alt="book1">
+            <div class="book1name">Let us C</div>
+            <div class="book1name">Trial</div>
+            <div class="design">
+                <button class="button2">Update</button>
+                <button class="button2">Delete</button>
+            </div>
+        </div>
+
+        <div class="container2">
+            <img src="./people/81EGXCaqmwL.jpg" alt="book2">
+            <div class="book1name">Learn Java</div>
+            <div class="book1name">Trial</div>
+            <div class="design">
+                <button class="button2">Update</button>
+                <button class="button2">Delete</button>
+            </div>
+        </div>
+
+        <div class="container2">
+            <img src="./people/51TQZ1zD-ZL.jpg" alt="book3">
+            <div class="book1name">HTML and CSS</div>
+            <div class="book1name">Trial</div>
+            <div class="design">
+                <button class="button2">Update</button>
+                <button class="button2">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="popupcontainer">
+        <div class="containerp1">
+            <div class="img2">
+                <img src="" alt="">
+            </div>
+            <div >
+                <input type="text" id="pop1" value="Let Us C">
+            </div>
+            <div>
+                <select name="choice" id="status">
+                    <option value="available">Available</option>
+                    <option value="notabailable">Not Available</option>
+                    <option value="borrowed">Borrowed</option>
+                </select>
+            </div>
+            <div>
+                <input type="file" id="file2" name="file2" required>
+            </div>
+            <div>
+                <button class="button3">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div class="popupcontainer">
+        <div class="containerp1">
+            <div class="img2">
+                <img src="" alt="">
+            </div>
+            <div >
+                <input type="text" id="pop1" value="Learn Java">
+            </div>
+            <div>
+                <select name="choice" id="status">
+                    <option value="available">Available</option>
+                    <option value="notabailable">Not Available</option>
+                    <option value="borrowed">Borrowed</option>
+                </select>
+            </div>
+            <div>
+                <input type="file" id="file2" name="file2" required>
+            </div>
+            <div>
+                <button class="button3">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div class="popupcontainer">
+        <div class="containerp1">
+            <div class="img2">
+                <img src="" alt="">
+            </div>
+            <div >
+                <input type="text" id="pop1" value="HTML and CSS">
+            </div>
+            <div>
+                <select name="choice" id="status">
+                    <option value="available">Available</option>
+                    <option value="notabailable">Not Available</option>
+                    <option value="borrowed">Borrowed</option>
+                </select>
+            </div>
+            <div>
+                <input type="file" id="file2" name="file2" required>
+            </div>
+            <div>
+                <button class="button3">Confirm</button>
+            </div>
+        </div>
+    </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const containerWrapper = document.querySelector(".container_wrapper");
+    const form = document.querySelector("form");
+    const nameInput = document.getElementById("name");
+    const priceInput = document.getElementById("price");
+
+    const FIXED_IMAGE_URL = "https://d28hgpri8am2if.cloudfront.net/tagged_assets/cvr9781442499560/9781442499560_hr.jpg";
+
+    let products = [
+        {
+            _id: "1",
+            name: "Let us C",
+            price: 299,
+            cover: "81ZPcK6HpuL.jpg"
+        },
+        {
+            _id: "2",
+            name: "Learn Java",
+            price: 349,
+            cover: "81EGXCaqmwL.jpg"
+        },
+        {
+            _id: "3",
+            name: "HTML and CSS",
+            price: 199,
+            cover: "51TQZ1zD-ZL.jpg"
+        }
+    ];
+
+    const renderProducts = () => {
+        containerWrapper.innerHTML = "";
+        products.forEach(product => {
+            const productCard = document.createElement("div");
+            productCard.classList.add("container2");
+
+            const imgSrc = product.cover.startsWith("http")
+                ? product.cover
+                : "./people/"+`${product.cover}`;
+
+            productCard.innerHTML = `
+                <img src="${imgSrc}" alt="${product.name}">
+                <div class="book1name">${product.name}</div>
+                <div class="book1name">₹${product.price}</div>
+                <div class="design">
+                    <button class="button2" onclick="updateProduct('${product._id}')">Update</button>
+                    <button class="button2" onclick="deleteProduct('${product._id}')">Delete</button>
+                </div>
+            `;
+
+            containerWrapper.appendChild(productCard);
+        });
+    };
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const name = nameInput.value.trim();
+        const price = parseFloat(priceInput.value);
+
+        if (!name || isNaN(price)) {
+            alert("Please enter valid product name and price.");
+            return;
+        }
+
+        const newProduct = {
+            _id: crypto.randomUUID(),
+            name,
+            price,
+            cover: FIXED_IMAGE_URL 
+        };
+
+        products.push(newProduct);
+        form.reset();
+        renderProducts();
+    });
+
+    window.deleteProduct = (id) => {
+        products = products.filter(p => p._id !== id);
+        renderProducts();
+    };
+
+    window.updateProduct = (id) => {
+        const product = products.find(p => p._id === id);
+        const newPrice = prompt("Enter new price:", product.price);
+        if (newPrice && !isNaN(newPrice)) {
+            product.price = parseFloat(newPrice);
+            renderProducts();
+        }
+    };
+
+    renderProducts();
+});
+
+</script>
+  
+</body>
+
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact us for any inquiries or support for our Book Store">
+    <title>Contact Us | Book Store</title>
+  <style>
+    .nvbr{
+  display: flex;
+  background-color: rgb(0, 68, 255);
+  justify-content: space-between;
+  position: sticky;
+  top: 2%;
+  z-index: 3;
+}
+ .logo{
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+.txthd{
+  font-family:"Times New Roman", Times, serif;
+  font: 1em sans-serif;
+  font-size: 2em;
+}
+.cont-menu ul{
+  display: flex;
+  gap: 15px;
+  list-style: none;
+}
+.cont-menu ul li a{
+  text-decoration: none;
+  font-size: 1.1em;
+  color: white;
+}
+.users-menu ul{
+  display: flex;
+  gap: 15px;
+  list-style: none;
+}
+.menu-container{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+.users-menu ul li a{
+  text-decoration: none;
+  font-size: 1.1em;
+  color: white;
+
+}
+.users-menu ul li a img{
+  text-decoration: none;
+
+} .menu-toggle{
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 1100;
+  }
+
+
+  .menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color:blueviolet;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    padding-top: 50px;
+  }
+
+  .menu-container.active {
+    transform: translateX(0);
+  }
+
+
+  .menu-container .cont-menu,
+  .menu-container .users-menu {
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-container ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .menu-container ul li a {
+    text-decoration: none;
+    font-size: 1.1em;
+    color: white;
+  }
+
+  .cont, .users {
+    display: none;
+  }
+}
+.menu-container ul li a {
+  position: relative;
+  text-decoration: none;
+  font-size: 1.1em;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.menu-container ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: blue;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+
+.menu-container ul li a:hover {
+  color: rgb(0, 255, 140);
+}
+
+.menu-container ul li a:hover::after {
+  width: 100%;
+}
+
+
+.menu-container ul li a.active {
+  color:white;
+}
+
+.menu-container ul li a.active::after {
+  width: 100%;
+}
+
+    body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333; 
+}
+
+
+.container1 {
+    max-width: 600px; 
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px;
+}
+.container2 {
+    padding: 20px;
+    text-align: center;
+    background-color: #fdfdfd;
+    border-radius: 10px;
+}
+
+
+.head {
+    font-size: 28px;
+    font-weight: bold;
+    color: #007BFF; 
+    margin-bottom: 20px;
+}
+
+
+.tab {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+.tab:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+
+textarea.tab {
+    min-height: 100px; 
+    resize: vertical; 
+}
+
+
+.tab1 {
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.tab1:hover {
+    background-color: #0056b3; 
+    transform: scale(1.05); 
+}
+
+
+@media screen and (max-width: 768px) {
+    .container1 {
+        width: 90%;
+    }
+
+    .tab {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+.container2 {
+    max-width: 500px;
+    margin: 50px auto;
+    background: linear-gradient(to right, #f8f9fa, #ffffff);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.7s ease-in-out;
+}
+
+.head {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#contactForm .tab,
+#contactForm textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: 0.3s ease;
+    box-sizing: border-box;
+    resize: vertical;
+    background-color: #fff;
+}
+
+#contactForm .tab:hover,
+#contactForm .tab:focus,
+#contactForm textarea:hover,
+#contactForm textarea:focus {
+    border-color: #007bff;
+    transform: scale(1.03);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    outline: none;
+}
+
+.tab1 {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.tab1:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+#contactForm .tab,
+#contactForm textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #dee2e6;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    background-color: #fff;
+    outline: none;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+#contactForm .tab:hover,
+#contactForm .tab:focus,
+#contactForm textarea:hover,
+#contactForm textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    transform: scale(1.02);
+}
+
+  </style>
+</head>
+<body>
+    <div class="nvbr">
+        <div class="logo">
+          <div class="ig">
+            <img src="./imges/books.png" alt="books logo" height="50px">
+          </div>
+          <div class="txthd"><b>Bookie</b></div>
+        </div>
+        <button class="menu-toggle">≡</button>
+    <div class="menu-container">
+        <div class="cont-menu">
+            <ul>
+              <li><a href="home.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="contactus.html">Contact</a></li>
+              <li><a href="order.html">Orders</a></li>
+            </ul>
+          </div>
+          <div class="users-menu">
+            <ul>
+              <li><a href="login.html">New Login</a></li>
+              <li><a href="signup.html">Register</a></li>
+              <li><a href="serch.html"><img src="./imges/serch.png" alt="" height="30px"></a></li>
+              <li><a href="crate.html"><img src="./imges/crt.png" alt="" height="30px"></a></li>
+                 <li> <a href="port-krtk.html"><img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Profile" /></a> </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <main class="container1">
+        <section class="container2">
+            <h2 class="head">Contact Us!</h2>
+            <form id="contactForm"  method="post">
+                <input id="name" name="name" class="tab" type="text" placeholder="Enter your name" required>
+                <input id="email" name="email" class="tab" type="email" placeholder="Enter your email" required>
+                <input id="phone" name="phone" class="tab" type="tel" placeholder="Enter your phone number" required>
+                <input type="text" name="type" class="tab" id="type" placeholder="Enter your payment method" required>
+                <textarea id="message"name="message"  class="tab" name="message" placeholder="Give us Feedback" ></textarea>
+                <button class="tab1" type="submit">Buy</button>
+            </form>
+        </section>
+    </main>
+    <script>
+             document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menuContainer = document.querySelector(".menu-container");
+
+    menuToggle.addEventListener("click", function () {
+        menuContainer.classList.toggle("active");
+    });
+});
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menuContainer = document.querySelector(".menu-container");
+
+    menuToggle.addEventListener("click", function () {
+      menuContainer.classList.toggle("active");
+    });
+
+    const currentUrl = window.location.href;
+    const links = document.querySelectorAll(".menu-container ul li a");
+
+    links.forEach(link => {
+      if (link.href === currentUrl) {
+        link.classList.add("active");
+      }
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menuContainer = document.querySelector(".menu-container");
+
+    menuToggle.addEventListener("click", function () {
+        menuContainer.classList.toggle("active");
+    });
+})
+
+
+    </script>
+</body>
+</html>
